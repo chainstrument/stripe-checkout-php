@@ -7,6 +7,7 @@
         }
     },
     "require": {
-        "stripe/stripe-php": "^13.10"
+        "stripe/stripe-php": "^13.10",
+        "nyholm/psr7-server": "^1.1"
     }
 }
