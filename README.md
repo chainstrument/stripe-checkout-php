@@ -10,3 +10,7 @@ launch php locally
 
 
 required an PSR7 request as 
+
+> composer require nyholm/psr7-server
+
+
