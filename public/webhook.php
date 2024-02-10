@@ -1,6 +1,7 @@
 <?php
 
 use App\Cart;
+use App\StripePayment;
 
 require_once '../vendor/autoload.php';
 
@@ -15,4 +16,7 @@ $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
     $psr17Factory  // StreamFactory
 );
 
-$serverRequest = $creator->fromGlobals();
+$request = $creator->fromGlobals();
+
+$payment = new StripePayment(STRIPE_SECRET_KEY);
+$payment->handle($request);

@@ -13,4 +13,9 @@ required an PSR7 request as
 
 > composer require nyholm/psr7-server
 
+require also an PSR17 factory (you can include it like )
+
+> composer require nyholm/psr7
+
+
 
