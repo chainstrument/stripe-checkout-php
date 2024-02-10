@@ -1,7 +1,7 @@
 <?php 
 
-require_once 'vendor/autoload.php';
-require_once 'config/define.php';
+require_once '../vendor/autoload.php';
+require_once '../config/define.php';
 
 $cart = new App\Cart();
 
