@@ -13,9 +13,11 @@ required an PSR7 request as
 
 > composer require nyholm/psr7-server
 
-require also an PSR17 factory (you can include it like )
+required also an PSR17 factory (you can get it like )
 
 > composer require nyholm/psr7
 
+
+Then, you can test locally with the stripe console (available on their website).
 
 

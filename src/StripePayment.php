@@ -4,6 +4,7 @@ namespace App;
 
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
+use Stripe\Webhook;
 
 class StripePayment 
 {
@@ -14,11 +15,15 @@ class StripePayment
 
     protected $clientSecret;
 
-    public function __construct(string $clientSecret)
+    protected $webhookSecret;
+
+    public function __construct(string $clientSecret, string $webhookSecret = '')
     {  
         $this->clientSecret = $clientSecret;
         Stripe::setApiKey($this->clientSecret); 
         Stripe::setApiVersion(static::API_VERSION);
+
+        $this->webhookSecret = $webhookSecret;
 
 
     }
@@ -55,5 +60,23 @@ class StripePayment
 
 
     }
+
+    public function handle(\PSR\Http\Message\ServerRequestInterface $request)
+    {
+        $signature = $request->getHeaderLine('stripe-signature');
+        $body = $request->getBody();
+
+        $event = Webhook::constructEvent(
+            $body, 
+            $signature,
+            $this->webhookSecret
+        );
+
+        if($event->type === 'checkout.Session.completed') {
+        
+        }
+
+    }
+
 
 }
