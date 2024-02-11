@@ -18,5 +18,5 @@ $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
 
 $request = $creator->fromGlobals();
 
-$payment = new StripePayment(STRIPE_SECRET_KEY);
+$payment = new StripePayment(STRIPE_SECRET_KEY, STRIPE_WEBHOOK_KEY);
 $payment->handle($request);
